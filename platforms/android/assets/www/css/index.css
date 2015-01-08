@@ -1,0 +1,178 @@
+* {
+    -webkit-user-select: none;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-size: larger;
+    height: 100%;
+}
+
+div {
+    overflow: hidden;
+}
+
+#header {
+    background: #212121;
+    color: white;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.1em;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.info * {
+    padding-left: 15px;
+}
+
+.info div {
+    padding-top: 7px;
+    font-family: fantasy;
+    font-size: 0.7em;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+.info * {
+    float: left;
+}
+
+.group {
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 15px 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.action {
+    margin: 0 20px;
+    padding: 15px 10px;
+    border-bottom: 1px solid lightgray;
+    color: #6d6d6d;
+}
+
+.name {
+    float: left;
+    width: 90%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cost {
+    font-weight: bold;
+    float: right;
+}
+
+#incomes .cost {
+    color: darkgreen;
+}
+
+
+#expenses .cost {
+    color: darkred;
+}
+
+#dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#dialog > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#dialog .background {
+    background: black;
+    opacity: 0.5;
+}
+
+.dialog {
+    margin: 150px auto;
+    width: 300px;
+    padding: 10px;
+    background: white
+}
+
+.dialog * {
+    font-size: 1.1em;
+}
+
+.dialog input {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    outline: 0;
+}
+
+.dialog input:focus {
+    border-bottom: 1px solid darkcyan;
+}
+
+.dialog button {
+    margin: 0;
+    padding: 5px 10px;
+    border: 0;
+    float: right;
+    background: transparent;
+    color: darkcyan;
+    font-family: fantasy;
+    font-size: 0.8em;
+}
+
+#undo {
+    position: fixed;
+    width: 100%;
+    bottom: 50px;
+}
+
+.undo {
+    width: 200px;
+    margin: 0 auto;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#menu > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#menu .background {
+    background: black;
+    opacity: 0.5;
+}
+
+.menu {
+    margin: 150px auto;
+    width: 300px;
+    padding: 10px;
+    background: white
+}
+
+.menu * {
+    font-size: 1.1em;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}

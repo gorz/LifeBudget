@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Life Budget</title>
+    </head>
+    <body>
+        <div id="header">
+            <div class="logo left">Life Budget</div>
+            <div class="info right">
+                <img id="add" src="img/add.png"/>
+                <div>BALANCE:</div>
+                <div id="balance">0</div>
+            </div>
+        </div>
+        <div id="actions">
+            <div class="group">Incomes</div>
+            <div id="incomes"></div>
+            <div class="group">Expenses</div>
+            <div id="expenses"></div>
+        </div>
+        <div id="history" style="display: none">
+
+        </div>
+        <div id="dialog" style="display: none">
+            <div class="background"></div>
+            <div>
+                <div class="dialog">
+                    <input id="actionName" type="text" placeholder="Name" autofocus/>
+                    <input id="actionCost" type="number" placeholder="Cost"/>
+                    <button id="ok">OK</button>
+                    <button id="cancel">CANCEL</button>
+                </div>
+            </div>
+        </div>
+        <div id="menu" style="display: none">
+            <div class="background"></div>
+            <div>
+                <div class="menu">
+                    <div id="edit">Edit</div>
+                    <div id="del">Delete</div>
+                </div>
+            </div>
+        </div>
+        <div id="undo" style="display: none;">
+            <div class="undo">
+                <div class="left" id="textUndo"></div>
+                <button class="right" id="btnUndo">Undo</button>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
