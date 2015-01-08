@@ -2,7 +2,7 @@ var CREATE = "CREATE TABLE history (id INTEGER PRIMARY KEY AUTOINCREMENT, name V
 
 var incomes, expenses;
 var db;
-var actionId = -1, balance = 0, lastId;
+var actionId = -1, balance = 0, lastId = null;
 var dialog, menu;
 var actions = [];
 
@@ -72,7 +72,7 @@ var app = {
     }
 };
 
-var timeout;
+var timeout, selectedView = null;
 function getActionView(id, name, cost) {
     var view = document.createElement('div');
     view.className = 'action';
@@ -80,15 +80,28 @@ function getActionView(id, name, cost) {
     view.onclick = onActionClick;
     view.ontouchstart = view.onmousedown = function(e) {
         var v = e.currentTarget;
+        selectedView = v;
         v.style.background = '#333';
         timeout = setTimeout(function() {
             v.style.background = 'transparent';
             showMenu(v);
-        }, 1500);
+        }, 1000);
     };
-    view.ontouchend = view.onmouseup = view.onmouseout = function(e) {
-        e.currentTarget.style.background = 'transparent';
-        clearTimeout(timeout);
+    function out(e) {
+        if(selectedView != null) {
+            selectedView.style.background = 'transparent';
+            selectedView = null;
+            clearTimeout(timeout);
+        }
+    }
+    view.ontouchend = view.onmouseup = view.onmouseout = out;
+    view.ontouchmove = function(e) {
+        v = document.elementFromPoint(event.touches[0].pageX, event.touches[0].pageY);
+        if(v === selectedView || v.parentNode === selectedView)
+            return;
+        if(selectedView != null) {
+            out(e);
+        }
     };
     var _name = document.createElement('div');
     _name.className = 'name';
@@ -102,9 +115,9 @@ function getActionView(id, name, cost) {
 }
 
 function onActionClick(e) {
-    lastId = e.currentTarget.getAttribute('actionId');
-    updateBalance(actions[lastId].cost);
-    showUndo(actions[lastId].cost);
+    var id = e.currentTarget.getAttribute('actionId');
+    updateBalance(actions[id].cost);
+    showUndo(id, actions[id].cost);
 }
 
 var lastView;
@@ -135,11 +148,12 @@ function hideMenu() {
 }
 
 var undoTimeout;
-function showUndo(text) {
+function showUndo(id, text) {
     if(lastId !== null) {
         clearTimeout(undoTimeout);
         onHide();
     }
+    lastId = id;
     document.getElementById('undo').style.display = 'block';
     document.getElementById('textUndo').innerText = text;
     document.getElementById('btnUndo').onclick = onUndo;
